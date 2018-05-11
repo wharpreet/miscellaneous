@@ -1,0 +1,82 @@
+
+startup_message off
+vbell off
+
+# Green text, time, and date; windows in blue:
+#hardstatus alwayslastline "%{=b}%{G} Screen(s): %{b}%w %=%{kG}%C%A  %D, %M/%d/%Y "
+hardstatus alwayslastline "%{=b}%{G} %{b}%w %=%{kG}%C%A %D,%d/%m/%y"
+shelltitle "Shell"
+
+defscrollback 5024
+
+# Window numbering starts at 1, not 0.
+bind c screen 1
+bind 0 select 10
+escape ^aa
+# Look and feel
+caption always "%{= 11}%{+b w}Screen: %n | %h %=%t %c"
+hardstatus alwayslastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+ 
+# Our warning of activity
+#activity "Activity in %t(%n)"
+ 
+# Left Right meta key mods
+#ALT-,. and ALT-<>
+bindkey "^[<" eval number !echo $WINDOW-1|bc
+bindkey "^[>" eval number !echo $WINDOW+1|bc
+bindkey "^[," prev
+bindkey "^[." next
+ 
+
+#bind s screen -t harpreet 5 ssh harpreet@server -t screen -d -R -S  /bin/bash
+
+select 1
+
+#bindkey -k ^, prev
+#bindkey -k ^. next
+
+autodetach	on
+
+# pgup pgdown
+termcapinfo xterm*|rxvt* 'ti@:te@'
+
+#
+# Run a screensaver if there's nothing happening for a while.
+#
+#idle 420 eval "screen cmatrix -f -o -u 10" "idle 0"
+
+
+#activity "%c activity -> %n%f %t"
+#activity "%C -> %n%f %t activity!"
+
+# Having this command in your .screenrc would bind the key sequence
+# C-a R' to the `su' command and give it an auto-title name of `root:'.
+
+bind R screen -t '% |root:' sudo bash 
+
+bind 'K' kill
+
+msgwait 15
+
+
+# termcap stuff
+#termcapinfo xterm     ti@:te@
+# make the cursor show up in red:
+#termcapinfo linux "ve=\E[?25h\E[?17;0;64c"
+
+bind = resize =
+bind + resize +1
+bind - resize -1
+
+screen -t  Shell 1 bash
+screen -t  Shell 2 bash
+screen -t  Shell 3 bash
+screen -t  Shell 4 bash
+screen -t  Shell 5 bash
+screen -t  Shell 6 bash
+screen -t  Shell 7 bash
+screen -t  Shell 8 bash
+screen -t  Shell 9 bash
+screen -t  Shell 0 bash
+
+
